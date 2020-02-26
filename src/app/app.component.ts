@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
 
@@ -38,11 +38,11 @@ export class AppComponent {
   constructor(private fb: FormBuilder){}
 
     registrationForm = this.fb.group({
-      empName: ['', [Validators.required, Validators.minLength(3),Validators.pattern(/admin/),Validators.pattern(/password/)]],
-      age: ['', Validators.required],
-      cNo: ['',Validators.required],
+      empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
+      age: ['', [Validators.required, Validators.max(99)]],
+      cNo: ['',[Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
       addrr: ['',Validators.required],
-      email: ['',Validators.required],
+      email: ['',[Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       bbio: ['']
     });
   

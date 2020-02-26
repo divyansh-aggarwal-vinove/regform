@@ -66,6 +66,7 @@ form input:focus, form textarea:focus {
 
 button {
     color: #fff;
+    font-weight: 900;
     padding:10px;
     width: 15%;
     background-color: #181818;
