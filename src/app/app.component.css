@@ -66,18 +66,23 @@ form input:focus, form textarea:focus {
 
 button {
     color: #fff;
-    display: block;
     padding:10px;
-    width: 25%;
+    width: 15%;
     background-color: #181818;
     border: 3px solid #f53b57;
     border-radius: 5px;
     cursor: pointer;
-    left: 50%;
     right: 50%;
     position: relative;
     transform: translateX(-50%);
     transition: 1.2s;
+}
+button[type=submit]{
+    left: 40%;
+}
+
+button[type=reset] {
+    left: 45%;
 }
 
 button:hover {

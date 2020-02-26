@@ -39,10 +39,10 @@ export class AppComponent {
 
     registrationForm = this.fb.group({
       empName: ['', [Validators.required, Validators.minLength(3),Validators.pattern(/admin/),Validators.pattern(/password/)]],
-      age: [''],
-      cNo: [''],
-      addrr: [''],
-      email: [''],
+      age: ['', Validators.required],
+      cNo: ['',Validators.required],
+      addrr: ['',Validators.required],
+      email: ['',Validators.required],
       bbio: ['']
     });
   
