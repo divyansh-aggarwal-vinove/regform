@@ -1,8 +1,4 @@
-body {
-    padding-top: 50px;
-}
-
-h2 {
+h1 {
     color: #fff;
     font-weight: bold;
     text-align: center;
@@ -31,6 +27,15 @@ label{
     padding-top: 15px;
     font-size: 1.2rem;
     margin: 20px 0 0 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+}
+
+small {
+    display: block;
+    width: 60%;
     position: relative;
     left: 50%;
     right: 50%;
@@ -72,9 +77,9 @@ button {
     right: 50%;
     position: relative;
     transform: translateX(-50%);
-    transition: 1s;
+    transition: 1.2s;
 }
 
-button :hover {
-    border-color: #2ecc71;
+button:hover {
+    border: 3px solid #2ecc71;
 }

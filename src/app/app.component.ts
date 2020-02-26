@@ -1,18 +1,58 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
+import { registerLocaleData } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  registrationForm = new FormGroup({
-    empName: new FormControl(''),
-    age: new FormControl(''),
-    cNo: new FormControl(''),
-    addrr: new FormControl(''),
-    email: new FormControl(''),
-    bbio: new FormControl('')
-  })
+
+  get empName(){
+    return this.registrationForm.get('empName');
+  }
+
+  get age(){
+    return this.registrationForm.get('age');
+  }
+
+  get cNo(){
+    return this.registrationForm.get('cNo');
+  }
+
+  get addrr(){
+    return this.registrationForm.get('addrr');
+  }
+
+  get email(){
+    return this.registrationForm.get('email');
+  }
+
+  get bbio(){
+    return this.registrationForm.get('bbio');
+  }
+
+
+  constructor(private fb: FormBuilder){}
+
+    registrationForm = this.fb.group({
+      empName: ['', [Validators.required, Validators.minLength(3),Validators.pattern(/admin/),Validators.pattern(/password/)]],
+      age: [''],
+      cNo: [''],
+      addrr: [''],
+      email: [''],
+      bbio: ['']
+    });
+  
+  
+  // registrationForm = new FormGroup({
+  //   empName: new FormControl(''),
+  //   age: new FormControl(''),
+  //   cNo: new FormControl(''),
+  //   addrr: new FormControl(''),
+  //   email: new FormControl(''),
+  //   bbio: new FormControl('')
+  // });
 }

@@ -1,11 +1,15 @@
-<body>
-  <div class = "container">
-  <h2>Employee Registration Form</h2>
+<div class = "container">
+  <h1>Employee Registration Form</h1>
   <hr> 
   <form [formGroup] = "registrationForm" class = "box">
     <div class = "form-group">
       <label><b>Employee Name:</b></label>
-      <input type = "text" placeholder = "Full Name" formControlName = "empName" class = "form-control">
+      <input type = "text" placeholder = "Full Name" formControlName = "empName" class = "form-control" [class.is-invalid] = "empName.invalid && empName.touched">
+      <div *ngIf = "empName.invalid && empName.touched">
+        <small class = "text-danger" *ngIf = "empName.errors?.required">Employee name is required</small>
+        <small class = "text-danger" *ngIf = "empName.errors?.minlength">Employee name must be at least 3 characters</small>
+        <small class = "text-danger" *ngIf = "empName.errors?.forbiddenName">This is a restricted name</small>
+      </div>
     </div>
 
     <div class = "form-group">
@@ -35,5 +39,6 @@
 
     <button type = "submit"><b>Register</b></button>
   </form>
-  </div>
-</body>
+
+  {{registrationForm.value | json}}
+</div>
