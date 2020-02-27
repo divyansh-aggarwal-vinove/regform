@@ -22,11 +22,12 @@
   
       <div class = "form-group">
         <label><b>Contact No.:</b></label>
-        <input type = "number" placeholder = "Phone Number" formControlName = "cNo" class = "form-control" [class.is-invalid] = "cNo.invalid && cNo.untouched">
+        <input type = "number" placeholder = "Phone Number" pattern = "^\d{10}$" formControlName = "cNo" class = "form-control" [class.is-invalid] = "cNo.invalid && cNo.untouched">
         <div *ngIf = "cNo.invalid && cNo.touched">
           <small class = "text-danger" *ngIf = "cNo.errors?.required">Contact number cannot be empty</small>
-          <small class = "text-danger" *ngIf = "cNo.errors?.max">Contact number cannot be more than 10 digits</small>
-          <small class = "text-danger" *ngIf = "cNo.errors?.min">Contact number cannot be less than 10 digits</small>
+          <small class = "text-danger" *ngIf = "cNo.errors?.pattern">Contact number must be a 10 digit number</small>
+          <!-- <small class = "text-danger" *ngIf = "cNo.errors?.max">Contact number cannot be more than 10 digits</small>
+          <small class = "text-danger" *ngIf = "cNo.errors?.min">Contact number cannot be less than 10 digits</small> -->
         </div>
       </div>
   

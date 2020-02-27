@@ -4,7 +4,7 @@ import { ListingComponent } from './listing/listing.component';
 
 
 const routes: Routes = [{
-  path: "/list",
+  path: 'listing',
   component: ListingComponent
 }];
 

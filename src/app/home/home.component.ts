@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.registrationForm = this.fb.group({
       empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
       age: ['', [Validators.required, Validators.max(99)]],
-      cNo: ['', [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+      cNo: ['', [Validators.required]],
       addrr: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       bbio: ['']
