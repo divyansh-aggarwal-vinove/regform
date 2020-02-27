@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
 
@@ -8,45 +8,59 @@ import { registerLocaleData } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
 
-  get empName(){
+export class AppComponent implements OnInit {
+
+  registrationForm: FormGroup;
+
+  get empName() {
     return this.registrationForm.get('empName');
   }
 
-  get age(){
+  get age() {
     return this.registrationForm.get('age');
   }
 
-  get cNo(){
+  get cNo() {
     return this.registrationForm.get('cNo');
   }
 
-  get addrr(){
+  get addrr() {
     return this.registrationForm.get('addrr');
   }
 
-  get email(){
+  get email() {
     return this.registrationForm.get('email');
   }
 
-  get bbio(){
+  get bbio() {
     return this.registrationForm.get('bbio');
   }
 
+  constructor(private fb: FormBuilder) { }
 
-  constructor(private fb: FormBuilder){}
+  ngOnInit(){
+  this.registrationForm = this.fb.group({
+    empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
+    age: ['', [Validators.required, Validators.max(99)]],
+    cNo: ['', [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+    addrr: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    bbio: ['']
+  });
+  }
+  
+  onSubmit() {
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registrationForm.value));
 
-    registrationForm = this.fb.group({
-      empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
-      age: ['', [Validators.required, Validators.max(99)]],
-      cNo: ['',[Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
-      addrr: ['',Validators.required],
-      email: ['',[Validators.required, Validators.email]],
-      bbio: ['']
-    });
+    if (this.registrationForm.invalid) {
+      return;
+    }
+
   
-  
+
+  }
+
   // registrationForm = new FormGroup({
   //   empName: new FormControl(''),
   //   age: new FormControl(''),

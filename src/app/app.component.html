@@ -1,7 +1,7 @@
 <div class = "container">
   <h1>Employee Registration Form</h1>z
   <hr> 
-  <form [formGroup] = "registrationForm" class = "box" >
+  <form [formGroup] = "registrationForm" class = "box" (ngSubmit) = "onSubmit()" >
     <div class = "form-group">
       <label><b>Employee Name:</b></label>
       <input type = "text" placeholder = "Full Name" formControlName = "empName" class = "form-control"  [class.is-invalid] = "empName.invalid && empName.untouched">
