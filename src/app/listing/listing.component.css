@@ -13,3 +13,27 @@ hr {
     border-width: 3px;
     background-color:#181818;
 }
+
+button {
+    color: #fff;
+    width: 30%;
+    background-color: #181818;
+    border: 2px solid #f53b57;
+    border-radius: 5px;
+    position: relative;
+    transform: translateX(-50%);
+    transition: 1.2s;
+}
+
+#new {
+    left:16%;
+}
+#edit{
+    left:52%;
+}
+#del {
+    left: 55%;
+}
+button:hover {
+    border: 2px solid #2ecc71;
+}
