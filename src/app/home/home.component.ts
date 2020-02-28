@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { fromEventPattern } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
 import { RegistrationService } from '../registration.service';
+import { sharedStylesheetJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -38,11 +39,13 @@ export class HomeComponent implements OnInit {
 
   get bbio() {
     return this.registrationForm.get('bbio');
+
   }
 
   constructor(private fb: FormBuilder, private _registrationService: RegistrationService) { }
 
   ngOnInit() {
+
     this.registrationForm = this.fb.group({
       empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
       age: ['', [Validators.required, Validators.max(99)]],
@@ -51,77 +54,38 @@ export class HomeComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       bbio: ['']
     });
+
   }
 
   onSubmit() {
-    console.log(this.empList.length);
-    const sds = JSON.parse(localStorage.getItem("emp_data"));
-
-    if (this.empList.length == 0) {
+  
+    if (localStorage.getItem('emp_data') == null) {
+      this.empList.push(this.registrationForm.value);
       localStorage.setItem('emp_data', JSON.stringify(this.empList));
-    }
-
-    if (this.empList.length != null && sds.length != null) {
-
-      //console.log("sds length " + sds.length)
-
+    } 
+    
+    else {
+      const fr = localStorage.getItem("emp_data");
+      const sds = JSON.parse(fr);
       for (var i = 0; i < sds.length; i++) {
         this.empList[i] = sds[i];
-        //console.log("sds", sds[i]);
       }
 
-      //console.log(this.registrationForm.value);
-
       this.empList.push(this.registrationForm.value);
-
-      //console.log(this.empList);
-
       localStorage.setItem('emp_data', JSON.stringify(this.empList));
-
 
     }
 
-
-    //console.log(JSON.parse(localStorage.getItem("emp_data")));
-
-    // if(this.empList.length == 0){
-    //   const sds = JSON.parse(localStorage.getItem("emp_data"));
-    //   console.log("sds length " + sds.length)
-    //   for(var i = 0; i < sds.length; i++){
-    //     this.empList[i] = sds[i];
-    //     console.log("sds",sds[i]);
-    //   }
-    // }
-
-    // console.log(this.registrationForm.value);
-    // this.empList.push(this.registrationForm.value);
-    // console.log(this.empList);
-
-    // localStorage.setItem('emp_data', JSON.stringify(this.empList));
-
-    // this._registrationService.register(this.registrationForm.value)
-    //   .subscribe(
-    //     response => console.log('Success', response),
-    //     error => console.log('Error', error)
-    //   );
-
-    //this.registrationForm.reset();
+    this.registrationForm.reset();
 
     // var yObj = JSON.parse(localStorage.getItem('emp_data'));
     // console.log(yObj);
-  
+
   }
 
 
 
 
 
-  // registrationForm = new FormGroup({
-  //   empName: new FormControl(''),
-  //   age: new FormControl(''),
-  //   cNo: new FormControl(''),
-  //   addrr: new FormControl(''),
-  //   email: new FormControl(''),
-  //   bbio: new FormControl('')
-  // });
+
 }
