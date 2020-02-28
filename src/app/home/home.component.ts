@@ -58,12 +58,12 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-  
+
     if (localStorage.getItem('emp_data') == null) {
       this.empList.push(this.registrationForm.value);
       localStorage.setItem('emp_data', JSON.stringify(this.empList));
-    } 
-    
+    }
+
     else {
       const fr = localStorage.getItem("emp_data");
       const sds = JSON.parse(fr);
@@ -79,11 +79,9 @@ export class HomeComponent implements OnInit {
     this.registrationForm.reset();
 
     // var yObj = JSON.parse(localStorage.getItem('emp_data'));
-    // console.log(yObj);
+    // console.log(yObj);howDetails
 
   }
-
-
 
 
 
