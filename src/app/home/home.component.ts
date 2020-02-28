@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   registrationForm: FormGroup;
 
+  empList = [];
+
   get empName() {
     return this.registrationForm.get('empName');
   }
@@ -52,17 +54,62 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    localStorage.setItem('data', JSON.stringify(this.registrationForm.value));
+    console.log(this.empList.length);
+    const sds = JSON.parse(localStorage.getItem("emp_data"));
+
+    if (this.empList.length == 0) {
+      localStorage.setItem('emp_data', JSON.stringify(this.empList));
+    }
+
+    if (this.empList.length != null && sds.length != null) {
+
+      //console.log("sds length " + sds.length)
+
+      for (var i = 0; i < sds.length; i++) {
+        this.empList[i] = sds[i];
+        //console.log("sds", sds[i]);
+      }
+
+      //console.log(this.registrationForm.value);
+
+      this.empList.push(this.registrationForm.value);
+
+      //console.log(this.empList);
+
+      localStorage.setItem('emp_data', JSON.stringify(this.empList));
+
+
+    }
+
+
+    //console.log(JSON.parse(localStorage.getItem("emp_data")));
+
+    // if(this.empList.length == 0){
+    //   const sds = JSON.parse(localStorage.getItem("emp_data"));
+    //   console.log("sds length " + sds.length)
+    //   for(var i = 0; i < sds.length; i++){
+    //     this.empList[i] = sds[i];
+    //     console.log("sds",sds[i]);
+    //   }
+    // }
+
+    // console.log(this.registrationForm.value);
+    // this.empList.push(this.registrationForm.value);
+    // console.log(this.empList);
+
+    // localStorage.setItem('emp_data', JSON.stringify(this.empList));
 
     // this._registrationService.register(this.registrationForm.value)
     //   .subscribe(
     //     response => console.log('Success', response),
     //     error => console.log('Error', error)
     //   );
-    this.registrationForm.reset();
 
-    var yObj = JSON.parse(localStorage.getItem('data'));
-    console.log(yObj);
+    //this.registrationForm.reset();
+
+    // var yObj = JSON.parse(localStorage.getItem('emp_data'));
+    // console.log(yObj);
+  
   }
 
 

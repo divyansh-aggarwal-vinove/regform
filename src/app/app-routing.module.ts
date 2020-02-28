@@ -3,10 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListingComponent } from './listing/listing.component';
 
 
-const routes: Routes = [{
-  path: 'listing',
-  component: ListingComponent
-}];
+const routes: Routes = [{ path: 'emp_list', component: ListingComponent },
+                        // { path: '**', component: PageNotFoundComopnent }
+                      ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
