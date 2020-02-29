@@ -2,6 +2,7 @@ h1 {
     color: #fff;
     font-weight: bold;
     text-align: center;
+    padding-bottom: 30px;
 }
 
 .table-dark{
@@ -16,26 +17,31 @@ hr {
 
 button {
     color: #fff;
-    width: 30%;
     font-size: small;
     padding:4px;
     background-color: #181818;
     border: 2px solid #f53b57;
     border-radius: 5px;
-    position: relative;
-    transform: translateX(-50%);
     transition: 1.2s;
 }
 
 #new {
-    left:16%;
+    left:5%;
+    width: 10%;
+    position: relative;
+    transform: translateX(-50%);
 }
+
 #edit{
-    left:52%;
+    font-size: small;
+    padding: 0 10px 0 10px;
 }
+
 #del {
-    left: 55%;
+    font-size: small;
+    padding: 0 10px 0 10px;
 }
+
 button:hover {
     border: 2px solid #2ecc71;
 }

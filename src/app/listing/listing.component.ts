@@ -16,4 +16,6 @@ export class ListingComponent implements OnInit {
 
   sdat = JSON.parse(localStorage.getItem("emp_data"));
 
+  onEdit(){}
+  onDel(){}
 }
