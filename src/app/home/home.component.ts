@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
     this.registrationForm.reset();
 
     // var yObj = JSON.parse(localStorage.getItem('emp_data'));
-    // console.log(yObj);howDetails
+    // console.log(yObj);
 
   }
 

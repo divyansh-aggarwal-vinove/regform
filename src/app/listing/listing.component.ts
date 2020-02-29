@@ -12,7 +12,7 @@ export class ListingComponent implements OnInit {
 
   ngOnInit(): void {
     let sdat = "";
-    let su = [""];
+    //let su = [""];
   }
 
   sdat = JSON.parse(localStorage.getItem("emp_data"));
@@ -20,6 +20,7 @@ export class ListingComponent implements OnInit {
   onEdit(id) {
     console.log("Edit id is: " + id);
     console.log(this.sdat[id]);
+    localStorage.setItem('iden',id);
   }
   
   cAll(){
