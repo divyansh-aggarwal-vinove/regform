@@ -10,7 +10,7 @@
   <table class='table table-dark' style='background-color:#181818'>
     <thead>
       <tr>
-        <th scope='col'>#</th>
+        <th scope='col'></th>
         <th scope='col'>Employee Name</th>
         <th scope='col'>Age</th>
         <th scope='col'>Contact No.</th>
@@ -22,15 +22,15 @@
       </tr>
     </thead>
     <tr *ngFor="let pp of sdat; let num = index">
-      <td scope='row'>{{ num + 1 }}</td>
+      <td scope='row'>==></td>
       <td>{{ pp.empName }}</td>
       <td>{{ pp.age }}</td>
       <td>{{ pp.cNo }}</td>
       <td>{{ pp.addrr }}</td>
       <td>{{ pp.email }}</td>
       <td>{{ pp.bbio }}</td>
-      <td><button type="button" id="edit" (click) = "onEdit()" >Edit</button></td>
-      <td><button type="button" id="del" (click) = "onDel()" >Delete</button></td>
+      <td><button type="button" id="edit" (click) = "onEdit(num)" >Edit</button></td>
+      <td><button type="button" id="del" (click) = "onDel(num)" >Delete</button></td>
     </tr>
   </table>
 </div>

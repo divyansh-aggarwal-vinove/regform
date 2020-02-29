@@ -16,6 +16,15 @@ export class ListingComponent implements OnInit {
 
   sdat = JSON.parse(localStorage.getItem("emp_data"));
 
-  onEdit(){}
-  onDel(){}
+  onEdit(id) {
+    console.log("Edit id is: " + id);
+    console.log(this.sdat[id]);
+  }
+  
+  onDel(id) {
+    // console.log("Delete id is: " + id);
+    // console.log(this.sdat[id]);
+    this.sdat.splice(id,1);
+    localStorage.setItem('emp_data',JSON.stringify(this.sdat));
+  }
 }
