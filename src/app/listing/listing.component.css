@@ -17,6 +17,8 @@ hr {
 button {
     color: #fff;
     width: 30%;
+    font-size: small;
+    padding:4px;
     background-color: #181818;
     border: 2px solid #f53b57;
     border-radius: 5px;
