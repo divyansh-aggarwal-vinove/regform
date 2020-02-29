@@ -12,6 +12,7 @@ export class ListingComponent implements OnInit {
 
   ngOnInit(): void {
     let sdat = "";
+    let su = [""];
   }
 
   sdat = JSON.parse(localStorage.getItem("emp_data"));
@@ -21,6 +22,11 @@ export class ListingComponent implements OnInit {
     console.log(this.sdat[id]);
   }
   
+  cAll(){
+    this.sdat.splice(0,this.sdat.length);
+    localStorage.setItem('emp_data',JSON.stringify(this.sdat));
+  }
+
   onDel(id) {
     // console.log("Delete id is: " + id);
     // console.log(this.sdat[id]);

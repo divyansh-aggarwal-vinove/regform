@@ -26,8 +26,8 @@ button {
 }
 
 #new {
-    left:5%;
-    width: 10%;
+    left:11%;
+    width: 20%;
     position: relative;
     transform: translateX(-50%);
 }
@@ -35,6 +35,13 @@ button {
 #edit{
     font-size: small;
     padding: 0 10px 0 10px;
+}
+
+#clear {
+    width: 20%;
+    left:90%;
+    position: relative;
+    transform: translateX(-50%)
 }
 
 #del {
