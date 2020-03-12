@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
-import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 import { EditComponent } from './edit/edit.component';
 
 
@@ -14,7 +14,7 @@ import { EditComponent } from './edit/edit.component';
   declarations: [
     AppComponent,
     ListingComponent,
-    HomeComponent,
+    RegisterComponent,
     EditComponent
   ],
   imports: [
