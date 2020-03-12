@@ -7,15 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListingComponent } from './listing/listing.component';
 import { RegisterComponent } from './register/register.component';
-import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListingComponent,
-    RegisterComponent,
-    EditComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

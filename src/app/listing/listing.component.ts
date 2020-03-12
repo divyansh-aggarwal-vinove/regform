@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listing',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class ListingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     let sdat = "";
@@ -21,6 +22,7 @@ export class ListingComponent implements OnInit {
     // console.log("Edit id is: " + id);
     // console.log(this.sdat[id]);
     localStorage.setItem('iden',id);
+    this.router.navigate(['/edit/',id]);
   }
   
   cAll(){
