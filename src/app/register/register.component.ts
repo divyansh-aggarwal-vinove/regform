@@ -63,15 +63,10 @@ export class RegisterComponent implements OnInit {
     if (this.router.url == "/edit/"+y) {
       let sdat = JSON.parse(localStorage.getItem("emp_data"));
       let y = localStorage.getItem('iden');
+      this.registrationForm.patchValue({
+        ...sdat[y]
+      })
 
-      this.registrationForm = this.fb.group({
-        empName: [sdat[y].empName, [Validators.required, Validators.minLength(3)]],
-        age: [sdat[y].age, [Validators.required, Validators.max(99)]],
-        cNo: [sdat[y].cNo, [Validators.required]],
-        addrr: [sdat[y].addrr, Validators.required],
-        email: [sdat[y].email, [Validators.required, Validators.email]],
-        bbio: [sdat[y].bbio]
-      });
       this.isRegister=false;
     }
 
@@ -98,10 +93,6 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registrationForm.reset();
-
-    // var yObj = JSON.parse(localStorage.getItem('emp_data'));
-    // console.log(yObj);
-
   }
   
 
@@ -110,20 +101,12 @@ export class RegisterComponent implements OnInit {
   sdat = JSON.parse(localStorage.getItem("emp_data"));
 
   onUpdate() {
-    
-    //console.log(this.yy);
+
     this.empList.push(this.registrationForm.value);
 
     for(var i = 0; i < this.empList.length; i++){
       this.sdat[this.yy[i]] = this.empList[i];
     }
-    // console.log(this.empList);
-    // this.sdat[this.yy] = this.empList;
-    // console.log(this.sdat[this.yy]);
     localStorage.setItem('emp_data',JSON.stringify(this.sdat));
-    
-
   }
-
-  
 }
