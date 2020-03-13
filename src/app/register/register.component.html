@@ -1,7 +1,7 @@
 <div class="container">
   <h1>{{ isRegister  ? 'Employee Registration Form' : 'Update Employee Details'}}</h1>
   <hr>
-  <form [formGroup]="registrationForm" class="box">
+  <form [formGroup]="registrationForm" class="box" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label><b>Employee Name:</b></label>
       <input type="text" placeholder="Full Name" formControlName="empName" class="form-control"
@@ -58,7 +58,7 @@
         class="form-control"></textarea>
     </div>
     
-    <button type="submit" *ngIf="isRegister" (click)="onSubmit()">Register</button>
+    <button type="submit" *ngIf="isRegister" [disabled]="registrationForm.invalid">Register</button>
     <button type="reset" *ngIf="isRegister">Reset</button>
 
     <button *ngIf="!isRegister" routerLink="/" type="submit" (click)="onUpdate()" style="left: 50%;">Update</button>

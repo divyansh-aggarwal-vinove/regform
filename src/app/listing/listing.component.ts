@@ -13,14 +13,11 @@ export class ListingComponent implements OnInit {
 
   ngOnInit(): void {
     let sdat = "";
-    //let su = [""];
   }
 
   sdat = JSON.parse(localStorage.getItem("emp_data"));
 
   onEdit(id) {
-    // console.log("Edit id is: " + id);
-    // console.log(this.sdat[id]);
     localStorage.setItem('iden',id);
     this.router.navigate(['/edit/',id]);
   }
@@ -31,8 +28,6 @@ export class ListingComponent implements OnInit {
   }
 
   onDel(id) {
-    // console.log("Delete id is: " + id);
-    // console.log(this.sdat[id]);
     this.sdat.splice(id,1);
     localStorage.setItem('emp_data',JSON.stringify(this.sdat));
   }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { sharedStylesheetJitUrl } from '@angular/compiler';
 import { fromEventPattern } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
-import { RegistrationService } from '../registration.service';
-import { sharedStylesheetJitUrl } from '@angular/compiler';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -42,15 +41,14 @@ export class RegisterComponent implements OnInit {
 
   get bbio() {
     return this.registrationForm.get('bbio');
-
   }
   
-  constructor(private fb: FormBuilder, private _registrationService: RegistrationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
 
     this.registrationForm = this.fb.group({
-      empName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/admin/), Validators.pattern(/password/)]],
+      empName: ['', [Validators.required, Validators.minLength(3)]],
       age: ['', [Validators.required, Validators.max(99)]],
       cNo: ['', [Validators.required]],
       addrr: ['', Validators.required],
@@ -93,10 +91,10 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registrationForm.reset();
+    
   }
   
-
-
+  
   yy = localStorage.getItem('iden');
   sdat = JSON.parse(localStorage.getItem("emp_data"));
 
