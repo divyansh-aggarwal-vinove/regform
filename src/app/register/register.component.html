@@ -61,8 +61,7 @@
     <button type="submit" *ngIf="isRegister" [disabled]="registrationForm.invalid">Register</button>
     <button type="reset" *ngIf="isRegister">Reset</button>
 
-    <button *ngIf="!isRegister" routerLink="/" type="submit" (click)="onUpdate()" style="left: 50%;">Update</button>
-  
+    <button *ngIf="!isRegister" routerLink="/" [disabled]="registrationForm.invalid" type="submit" (click)="onUpdate()" style="left: 50%;">Update</button>
   </form>
 
   <br><br>
