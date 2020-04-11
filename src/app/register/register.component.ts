@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, UrlTree, UrlSegmentGroup, UrlSegment, PRIMARY_OUTLET } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { sharedStylesheetJitUrl } from '@angular/compiler';
 import { fromEventPattern } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
     return this.registrationForm.get('bbio');
   }
   
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -57,15 +58,18 @@ export class RegisterComponent implements OnInit {
     });
     this.isRegister = true;
 
-    let y = localStorage.getItem('iden');
-    if (this.router.url == "/edit/"+y) {
-      let sdat = JSON.parse(localStorage.getItem("emp_data"));
-      let y = localStorage.getItem('iden');
-      this.registrationForm.patchValue({
-        ...sdat[y]
-      })
+    const tree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
 
-      this.isRegister=false;
+    if(s[0].path == "edit"){
+    const id: string = this.route.snapshot.params.id;
+    let sdat = JSON.parse(localStorage.getItem("emp_data"));
+    this.registrationForm.patchValue({
+      ...sdat[id]
+    })
+
+    this.isRegister = false;
     }
 
   }
@@ -108,3 +112,6 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem('emp_data',JSON.stringify(this.sdat));
   }
 }
+
+
+
