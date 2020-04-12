@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
     const s: UrlSegment[] = g.segments;
 
     if(s[0].path == "edit"){
-    const id: string = this.route.snapshot.params.id;
+    const id: string = this.route.snapshot.paramMap.get('id');
     let sdat = JSON.parse(localStorage.getItem("emp_data"));
     this.registrationForm.patchValue({
       ...sdat[id]
@@ -95,6 +95,8 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registrationForm.reset();
+    alert("New Employee has been registered successfully!!");
+    this.router.navigate(['']);
     
   }
   
@@ -110,6 +112,10 @@ export class RegisterComponent implements OnInit {
       this.sdat[this.yy[i]] = this.empList[i];
     }
     localStorage.setItem('emp_data',JSON.stringify(this.sdat));
+
+    alert("Changes have been saved successfully!!");
+    this.router.navigate(['']);
+    
   }
 }
 
